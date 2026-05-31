@@ -40,10 +40,6 @@ import {
       title: "Projects",
     },
     {
-      id: "academia",
-      title: "Academia",
-    },
-    {
       id: "contact",
       title: "Contact",
     },
