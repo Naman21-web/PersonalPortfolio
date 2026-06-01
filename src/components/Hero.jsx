@@ -7,7 +7,8 @@ const Hero = () => {
   const handleResumeDownload = async () => {
     try {
       // Fetch the file and create a blob URL
-      const response = await fetch('/Portfolio/NamanJain_Resume_2YOE.pdf');
+      const resumePath = `${import.meta.env.BASE_URL}NamanJain_Resume_2YOE.pdf`;
+      const response = await fetch(resumePath);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -18,7 +19,7 @@ const Hero = () => {
       // Create download link
       const link = document.createElement('a');
       link.href = url;
-      link.download = 'Portfolio/NamanJain_Resume_2YOE.pdf';
+      link.download = 'NamanJain_Resume_2YOE.pdf';
       link.style.display = 'none';
       
       // Trigger download
@@ -31,7 +32,8 @@ const Hero = () => {
     } catch (error) {
       console.error('Error downloading resume:', error);
       // Fallback: open in new tab
-      window.open('/Portfolio/NamanJain_Resume_2YOE.pdf', '_blank');
+      const resumePath = `${import.meta.env.BASE_URL}NamanJain_Resume_2YOE.pdf`;
+      window.open(resumePath, '_blank');
     }
   };
 
