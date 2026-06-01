@@ -58,14 +58,6 @@ const Navbar = () => {
     }
   };
 
-  const handleAcademiaClick = () => {
-    setActive("Academia");
-    setToggle(false);
-    if (location.pathname !== "/academia") {
-      navigate("/academia");
-    }
-  };
-
   const handleWorkClick = () => {
     setActive("Work");
     setToggle(false);
@@ -149,18 +141,6 @@ const Navbar = () => {
                   {nav.title}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
                 </button>
-              ) : nav.id === "academia" ? (
-                <button
-                  className={`${
-                    active === nav.title 
-                      ? "text-accent" 
-                      : "text-white/70 hover:text-accent"
-                  } text-sm font-medium cursor-pointer transition-all duration-300 relative`}
-                  onClick={handleAcademiaClick}
-                >
-                  {nav.title}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent group-hover:w-full transition-all duration-300"></span>
-                </button>
               ) : nav.id === "work" ? (
                 <button
                   className={`${
@@ -237,8 +217,8 @@ const Navbar = () => {
                       onClick={() => {
                         if (nav.id === "projects") {
                           handleProjectsClick();
-                        } else if (nav.id === "academia") {
-                          handleAcademiaClick();
+                        // } else if (nav.id === "academia") {
+                        //   handleAcademiaClick();
                         } else if (nav.id === "work") {
                           handleWorkClick();
                         } else if (nav.id === "contact") {
