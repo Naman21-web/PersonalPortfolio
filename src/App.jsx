@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HashRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 import { 
@@ -18,24 +18,37 @@ import {
 } from "./components";
 
 const HomePage = () => {
+  const location = useLocation();
+
   useEffect(() => {
-    // Handle hash links when the page loads
-    const handleHashLink = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        const elementId = hash.substring(1); // Remove the # symbol
-        const element = document.getElementById(elementId);
+    // Handle hash links and sessionStorage scroll flags
+    const handleScroll = () => {
+      // Check if we should scroll to contact from sessionStorage
+      if (sessionStorage.getItem('scrollToContact')) {
+        const element = document.getElementById('contact');
         if (element) {
-          // Wait a bit for the page to fully load, then scroll
           setTimeout(() => {
             element.scrollIntoView({ behavior: "smooth" });
-          }, 500);
+          }, 100);
+        }
+        sessionStorage.removeItem('scrollToContact');
+      } else {
+        // Handle regular hash links
+        const hash = window.location.hash;
+        if (hash) {
+          const elementId = hash.substring(1); // Remove the # symbol
+          const element = document.getElementById(elementId);
+          if (element) {
+            setTimeout(() => {
+              element.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+          }
         }
       }
     };
 
-    handleHashLink();
-  }, []);
+    handleScroll();
+  }, [location]);
 
   return (
     <div className='relative z-0 bg-primary'>

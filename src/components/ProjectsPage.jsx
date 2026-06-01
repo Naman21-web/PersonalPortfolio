@@ -118,15 +118,17 @@ const ProjectsPage = () => {
             <p className="text-white/50 text-lg mb-8">
               Interested in collaborating on a project? Let's build something amazing together.
             </p>
-            <Link to="/#contact">
               <motion.button
+                onClick={() => {
+                  sessionStorage.setItem('scrollToContact', 'true');
+                  window.location.href = '/#/';
+                }}
                 whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(0, 255, 136, 0.3)" }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-3 bg-accent text-primary font-semibold rounded-full hover:bg-accent-light transition-all duration-300 shadow-[0_0_10px_rgba(0,255,136,0.2)]"
               >
                 Get In Touch
               </motion.button>
-            </Link>
           </motion.div>
         </div>
       </div>
